@@ -1,6 +1,6 @@
-package Week1;
+package chapter06;
 
-import java.util.Scanner;
+import myLibrary.getInput;
 
 public class PalindromeInteger
 {
@@ -8,7 +8,7 @@ public class PalindromeInteger
     public static void main(String arg[])
     {
         //Query user for input.
-        String str = String.valueOf(inputInt());
+        String str = String.valueOf(getInput.createInt());
 
         //reverse sort string.
         String reverseStr = reverseSort(str);
@@ -69,30 +69,4 @@ public class PalindromeInteger
         return b;
     }
 
-    private static int inputInt()
-    {
-        //Simple class to fetch user input and return Integer
-        //Has simple loop to handle error catching and prevent non-integer inputs.
-
-        int input;
-        Scanner kb = new Scanner(System.in);
-
-        do
-        {
-            try
-            {
-                System.out.println("Please input an Integer => ");
-                input = kb.nextInt();
-                break;
-            }
-            catch(Exception e)
-            {
-                System.out.println("Please Try Again. Make sure to use an Integer.");
-                kb.next();
-            }
-
-        }while(true);
-
-        return input;
-    }
 }
