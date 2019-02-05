@@ -25,7 +25,6 @@ public class FindNearestPointsPoint2D {
         // Set min value to max double
         // keep track of the min values indices in array
 
-        double[][] distances = new double[numberOfPoints][numberOfPoints];
         double min = Double.MAX_VALUE;
         int pointA = 0;
         int pointB = 0;
