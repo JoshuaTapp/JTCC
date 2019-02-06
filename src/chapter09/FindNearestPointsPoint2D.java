@@ -33,8 +33,8 @@ public class FindNearestPointsPoint2D {
         //Standard Brute Force Algorithm
         for (int i = 0; i < points.length; i++) {
             for (int j = i + 1; j < points.length; j++) {
-                if (computeDistance(points[i], points[j]) < min) {
-                    min = computeDistance(points[i], points[j]);
+                if (points[i].distance(points[j]) < min) {
+                    min = points[i].distance(points[j]);
                     pointA = i;
                     pointB = j;
                 }
@@ -43,13 +43,6 @@ public class FindNearestPointsPoint2D {
         //Print results
         System.out.println("The closest two points are " + points[pointA].toString().substring(14) + " and " + points[pointB].toString().substring(14));
     }
-
-    // Compute distance between points. Improves readability.
-    public static double computeDistance(Point2D a, Point2D b){
-        return Point2D.distance(a.getX(), a.getY(), b.getX() , b.getY());
-    }
-
-
 }
 
 
