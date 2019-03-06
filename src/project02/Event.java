@@ -1,7 +1,11 @@
 package project02;
+import com.sun.org.apache.xpath.internal.operations.Number;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -10,13 +14,18 @@ public abstract class Event {
     private String place;
     private Date dateTime;
     private int audience;
-    private static int NumberOfObjects = 0;
+    private static int NumberOfObjects;
 
-    public Event() {
-        this.setNumberOfObjects(this.getNumberOfObjects() + 1);
+    //Constructors
+    public Event(String name, String place, Date dateTime, int audience) {
+        this.setNumberOfObjects();
+        this.setName(name);
+        this.setPlace(place);
+        this.setDateTime(dateTime);
+        this.setAudience(audience);
     }
 
-
+    //GETTERS AND SETTERS
     public String getName() {
         return name;
     }
@@ -53,30 +62,28 @@ public abstract class Event {
         return NumberOfObjects;
     }
 
-    public static void setNumberOfObjects(int numberOfObjects) {
-        NumberOfObjects = numberOfObjects;
+    public static void setNumberOfObjects(){
+        NumberOfObjects += 1;
     }
 
+    //HELPER METHODS
     public String printArray(Object[] arr) {
         return Arrays.toString(arr);
     }
-    public String formatDate(){
+    public String formatDate(Date dateTime){
         SimpleDateFormat Date = new SimpleDateFormat("MM/dd/yyyy hh:mm");
         return Date.format(this.getDateTime());
     }
 
+    //METHODS
     @Override
     public String toString() {
         return
-                String.format("[class = %s, name = %s, place = %s, date/time = %Tm/%Td/%TY %tH:%tM, %s, audience = %s]",
+                String.format("[class = %s, name = %s, place = %s , date/time = %s, %s, audience = %s]",
                         this.getClass().getSimpleName(),
                         this.getName(),
                         this.getPlace(),
-                        this.getDateTime(),
-                        this.getDateTime(),
-                        this.getDateTime(),
-                        this.getDateTime(),
-                        this.getDateTime(),
+                        this.formatDate(this.getDateTime()),
                         Week.isWeekEnd(this.getDateTime()),
                         this.getAudience());
     }

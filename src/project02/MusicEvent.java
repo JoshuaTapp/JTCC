@@ -1,21 +1,23 @@
 package project02;
 
+import java.util.Date;
+
 public abstract class MusicEvent extends Event {
     private String[] performers;
     private static int NumberOfObjects = 0;
 
-    public MusicEvent() {
-        this.setNumberOfObjects(this.getNumberOfObjects() + 1);
+    public MusicEvent(String name, String place, Date dateTime, int audience, String[] performers) {
+        super(name, place, dateTime, audience);
+        this.setPerformers(performers);
+        this.setNumberOfObjects();
     }
 
-
+    public static void setNumberOfObjects(){
+        NumberOfObjects += 1;
+    }
 
     public static int getNumberOfObjects() {
         return NumberOfObjects;
-    }
-
-    public static void setNumberOfObjects(int numberOfObjects) {
-        NumberOfObjects = numberOfObjects;
     }
 
     public String[] getPerformers() {
@@ -26,7 +28,9 @@ public abstract class MusicEvent extends Event {
         this.performers = performers;
     }
 
-    public MusicEvent(String[] performers) {
-        this.performers = performers;
+    @Override
+    public String toString(){
+        return String.format("%s %s", super.toString(), (String.format("performers = %s" , (this.getPerformers().toString() ) ) ) );
     }
 }
+

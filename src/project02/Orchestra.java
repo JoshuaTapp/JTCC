@@ -9,21 +9,17 @@ public class Orchestra extends MusicEvent{
 
 
     public Orchestra(String name, String place, Date dateTime, int audience, String[] performers, boolean attire) {
-        this.setName(name);
-        this.setPlace(place);
-        this.setDateTime(dateTime);
-        this.setAudience(audience);
-        this.setPerformers(performers);
+        super(name, place,dateTime, audience, performers);
         this.setCasualAttire(attire);
-        this.setNumberOfObjects(this.getNumberOfObjects() + 1);
+        this.setNumberOfObjects();
+    }
+
+    public static void setNumberOfObjects(){
+        NumberOfObjects += 1;
     }
 
     public static int getNumberOfObjects() {
         return NumberOfObjects;
-    }
-
-    public static void setNumberOfObjects(int numberOfObjects) {
-        NumberOfObjects = numberOfObjects;
     }
 
     public boolean isCasualAttire() {
@@ -41,7 +37,7 @@ public class Orchestra extends MusicEvent{
                 this.getClass().getSimpleName(),
                 this.getName(),
                 this.getPlace(),
-                this.formatDate(),
+                this.formatDate(this.getDateTime()),
                 Week.isWeekEnd(this.getDateTime()),
                 this.getAudience(),
                 this.printArray(getPerformers()),

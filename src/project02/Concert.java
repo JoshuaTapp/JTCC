@@ -1,6 +1,5 @@
 package project02;
 
-import java.text.DateFormat;
 import java.util.Date;
 
 public class Concert extends MusicEvent implements GoodWeather{
@@ -11,11 +10,8 @@ public class Concert extends MusicEvent implements GoodWeather{
 
     //Constructor
     public Concert(String name, String place, Date dateTime, int audience, String[] performers, String type, Weather weather) {
-        this.setName(name);
-        this.setPlace(place);
-        this.setDateTime(dateTime);
-        this.setAudience(audience);
-        this.setPerformers(performers);
+        super(name,place,dateTime,audience,performers);
+
         this.setType(type);
         this.setWeather(weather);
         this.setNumberOfObjects(this.getNumberOfObjects() + 1);
@@ -55,7 +51,7 @@ public class Concert extends MusicEvent implements GoodWeather{
                 this.getClass().getSimpleName(),
                 this.getName(),
                 this.getPlace(),
-                this.formatDate(),
+                this.formatDate(this.getDateTime()),
                 Week.isWeekEnd(this.getDateTime()),
                 this.getAudience(),
                 this.printArray(this.getPerformers()),

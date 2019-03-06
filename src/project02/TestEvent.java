@@ -72,7 +72,7 @@ public class TestEvent {
         System.out.println(object7);
         TestEvent.getNumberOfObjects();
         System.out.println();
-        
+
     }  // main()
 
     public static void getNumberOfObjects() {

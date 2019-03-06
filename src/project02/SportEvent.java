@@ -1,30 +1,34 @@
 package project02;
 
+import java.lang.reflect.Array;
+import java.util.Date;
+
 public abstract class SportEvent extends Event {
 
 
     private String league;
     private String[] teams = new String[2];
     private int[] scores = new int[2];
-    private String winner;
-    private static int NumberOfObjects = 0;
-
+    private static int NumberOfObjects;
 
     //Constructor
-    public SportEvent() {
-        this.setNumberOfObjects(this.getNumberOfObjects() + 1);
 
+    public SportEvent(String name, String place, Date dateTime, int audience, String[] teams, int[] scores, String league){
+        super(name,place,dateTime,audience);
+        this.setTeams(teams);
+        this.setScores(scores);
+        this.setLeague(league);
+        this.setNumberOfObjects();
 
     }
 
     //GETTERS AND SETTERS
+    public static void setNumberOfObjects(){
+        NumberOfObjects += 1;
+    }
 
     public static int getNumberOfObjects() {
         return NumberOfObjects;
-    }
-
-    public static void setNumberOfObjects(int numberOfObjects) {
-        NumberOfObjects = numberOfObjects;
     }
 
     public String getLeague() {
@@ -51,67 +55,22 @@ public abstract class SportEvent extends Event {
         this.scores = scores;
     }
 
-    public String getWinner() {
-        return winner;
-    }
-
-    public void setWinner(String winner) {
-        this.winner = winner;
-    }
-
-    public String team(int i) {
-        if (!(i == 0 || i == 1)) {
-            return "ERROR";
-        }
-
-        String[] str = this.getTeams();
-        return str[i];
-    }
-
-    public int score(int i) {
-        if (!(i == 0 || i == 1)) {
-            return -1;
-        }
-
-        int[] str = this.getScores();
-        return str[i];
-    }
-
-    public static String whoWinner(String[] str, int[] i) {
-
-        String winner;
-
-        if (i[0] > i[1]){
-            winner = str[0] + " won";
-        }
-        else if(i[0] < i[1]){
-            winner = str[1] + " won";
-        }
-        else{
-           double k =  Math.round(Math.random());
-            if (k > .5) winner = str[0] + "won";
-            else winner = (str[1] + "won");
-        }
-        return winner;
-    }
-
     @Override
     public String toString() {
-
-        return
-                String.format("[class = %s, name = %s, place = %s, date/time = %s, %s, audience = %s] %n[teams = %s vs %s, scores = %s - %s, %s, league = %s]",
-                        this.getClass().getSimpleName(),
-                        this.getName(),
-                        this.getPlace(),
-                        this.formatDate(),
-                        Week.isWeekEnd(this.getDateTime()),
-                        this.getAudience(),
-                        this.team(0),
-                        this.team(1),
-                        this.score(0),
-                        this.score(1),
-                        this.whoWinner(this.getTeams(), this.getScores()),
-                        this.getLeague()     );
+        return String.format("%s %s", (super.toString()), (String.format("[teams = %s vs %s, scores = %s - %s, %s won, league = %s]", Array.get(this.getTeams(), 0), Array.get(this.getTeams(), 1), Array.get(this.getScores(), 0), Array.get(this.getScores(), 1), this.winner(), this.getLeague())));
     }
 
+    public String winner(){
+        final int s1 = (int) Array.get(this.getScores(), 0);
+        final int s2 = (int) Array.get(this.getScores(), 1);
+        final String t1 = (String) Array.get(this.getTeams(), 0);
+        final String t2 = (String) Array.get(this.getTeams(), 1);
+
+        if(s1 > s2) return t1;
+        else if (s1 < s2) return t2;
+        else return (Math.random() > .499999999999999 ?  t1 : t2);
+        }
+
 }
+
+
