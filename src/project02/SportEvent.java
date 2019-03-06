@@ -88,7 +88,9 @@ public abstract class SportEvent extends Event {
             winner = str[1] + " won";
         }
         else{
-            winner = "tie";
+           double k =  Math.round(Math.random());
+            if (k > .5) winner = str[0] + "won";
+            else winner = (str[1] + "won");
         }
         return winner;
     }
