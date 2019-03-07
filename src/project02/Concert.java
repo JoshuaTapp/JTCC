@@ -11,7 +11,6 @@ public class Concert extends MusicEvent implements GoodWeather{
     //Constructor
     public Concert(String name, String place, Date dateTime, int audience, String[] performers, String type, Weather weather) {
         super(name,place,dateTime,audience,performers);
-
         this.setType(type);
         this.setWeather(weather);
         this.setNumberOfObjects(this.getNumberOfObjects() + 1);
@@ -47,14 +46,8 @@ public class Concert extends MusicEvent implements GoodWeather{
 
     @Override
     public String toString() {
-        return String.format("[class = %s, name = %s, place = %s, date/time = %s, %s, audience = %s] %n[performers = %s][type = %s, %s]",
-                this.getClass().getSimpleName(),
-                this.getName(),
-                this.getPlace(),
-                this.formatDate(this.getDateTime()),
-                Week.isWeekEnd(this.getDateTime()),
-                this.getAudience(),
-                this.printArray(this.getPerformers()),
+        return String.format("%s [type = %s, %s]",
+                super.toString(),
                 this.getType(),
                 this.getWeather().isGoodWeather() ? "Good Weather" : "Bad Weather" );
     }

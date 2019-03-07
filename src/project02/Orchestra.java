@@ -1,5 +1,6 @@
 package project02;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Orchestra extends MusicEvent{
@@ -40,7 +41,7 @@ public class Orchestra extends MusicEvent{
                 this.formatDate(this.getDateTime()),
                 Week.isWeekEnd(this.getDateTime()),
                 this.getAudience(),
-                this.printArray(getPerformers()),
+                Arrays.toString(this.getPerformers()),
                 this.isCasualAttire() ? "Casual Attire" : "Formal Attire");
     }
 }

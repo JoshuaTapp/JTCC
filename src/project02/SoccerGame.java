@@ -5,7 +5,7 @@ import java.util.Date;
 public class SoccerGame extends SportEvent implements GoodWeather {
 
     private Weather weather;
-    private static int NumberOfObjects = 0;
+    private static int NumberOfObjects;
 
     //Constructor
     public SoccerGame(String name, String place, Date dateTime, int audience, String[] teams, int[] scores, String league, Weather weather) {
@@ -29,10 +29,7 @@ public class SoccerGame extends SportEvent implements GoodWeather {
 
     @Override
     public String toString(){
-        StringBuilder str = new StringBuilder();
-        str.append(super.toString());
-        str.append(this.isGoodWeather() ? "[Good Weather]" : "[Bad Weather]" );
-        return str.toString();
+        return String.format("%s %s", super.toString(), (this.isGoodWeather() ? "[Good Weather]" : "[Bad Weather]" ));
     }
 
     @Override

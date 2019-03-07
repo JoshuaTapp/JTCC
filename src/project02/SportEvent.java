@@ -68,9 +68,9 @@ public abstract class SportEvent extends Event {
 
         if(s1 > s2) return t1;
         else if (s1 < s2) return t2;
-        else return (Math.random() > .499999999999999 ?  t1 : t2);
+        else return (Math.random() > 0.499999999999999 ?  t1 : t2);
         }
-
 }
+
 
 

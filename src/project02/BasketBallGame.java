@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BasketBallGame extends SportEvent {
 
-    private static int NumberOfObjects = 0;
+    private static int NumberOfObjects;
 
 
     public BasketBallGame(String name, String place, Date dateTime, int audience, String[] teams, int[] scores, String league) {
@@ -19,6 +19,11 @@ public class BasketBallGame extends SportEvent {
 
     public static int getNumberOfObjects() {
         return NumberOfObjects;
+    }
+
+    @Override
+    public String toString(){
+        return super.toString();
     }
 
 }

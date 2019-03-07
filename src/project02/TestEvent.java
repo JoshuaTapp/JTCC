@@ -38,7 +38,7 @@ public class TestEvent {
         TestEvent.getNumberOfObjects();
         System.out.println();
         
-        calendar.set(2018, Calendar.JULY, 1, 13, 0);  // 08/01/2018, 13:00
+        calendar.set(2018, Calendar.AUGUST, 1, 13, 0);  // 08/01/2018, 13:00
         dateTime = calendar.getTime();
         Object object3 = new Concert("Folk Festival", "Browns Island", dateTime, 900, new String[]{"The Green Fields of America", "Be’la Dona", "Dale Ann Bradley"} , "Folk Music", new Weather(false, 85.0, 2.0, 0.5));
         System.out.println(object3);

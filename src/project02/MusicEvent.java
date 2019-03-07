@@ -1,5 +1,6 @@
 package project02;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public abstract class MusicEvent extends Event {
@@ -30,7 +31,7 @@ public abstract class MusicEvent extends Event {
 
     @Override
     public String toString(){
-        return String.format("%s %s", super.toString(), (String.format("performers = %s" , (this.getPerformers().toString() ) ) ) );
+        return String.format("%s [performers = %s]", super.toString(), Arrays.toString(this.getPerformers()) );
     }
 }
 

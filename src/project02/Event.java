@@ -67,11 +67,9 @@ public abstract class Event {
     }
 
     //HELPER METHODS
-    public String printArray(Object[] arr) {
-        return Arrays.toString(arr);
-    }
+
     public String formatDate(Date dateTime){
-        SimpleDateFormat Date = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+        SimpleDateFormat Date = new SimpleDateFormat("M/dd/yyyy kk:mm");
         return Date.format(this.getDateTime());
     }
 
