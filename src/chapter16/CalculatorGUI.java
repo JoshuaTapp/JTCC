@@ -13,7 +13,7 @@ import javafx.scene.control.SelectionMode;
 
 public class CalculatorGUI extends Application {
     private String[] programTitles  = { "Loan Calculator", "Investment Value Calculator", "Close" };
-    private Pane[]   displayPanes   = { new LoanCalculatorPane().getLoanCalculatorPane(), new InvestmentValueCalculatorPane().getPane() };
+    private Pane[] programPanes = { new LoanCalculatorPane().getLoanCalculatorPane(), new InvestmentValueCalculatorPane().getPane() };
 
 
     @Override
@@ -40,13 +40,13 @@ public class CalculatorGUI extends Application {
         //Event Handler
         listView.getSelectionModel().getSelectedIndices().addListener(
                 (ListChangeListener<? super Integer>) e1 -> {
-                    stack.getChildren().removeAll(displayPanes);
+                    stack.getChildren().removeAll(programPanes);
 
                     if(listView.getSelectionModel().getSelectedItem().equals("Loan Calculator")){
-                        stack.getChildren().add(displayPanes[0]);
+                        stack.getChildren().add(programPanes[0]);
                     }
                     else if(listView.getSelectionModel().getSelectedItem().equals("Investment Value Calculator")){
-                        stack.getChildren().add(displayPanes[1]);
+                        stack.getChildren().add(programPanes[1]);
                     }
                     else { System.exit(0); }
                 }
