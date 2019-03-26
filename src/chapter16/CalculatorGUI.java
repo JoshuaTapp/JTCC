@@ -25,8 +25,6 @@ public class CalculatorGUI extends Application {
 
         StackPane stack = new StackPane();
         ScrollPane scroll = new ScrollPane(listView);
-        scroll.fitToWidthProperty();
-        scroll.fitToHeightProperty();
 
         HBox mainPane = new HBox();
         mainPane.getChildren().addAll(scroll, stack);
