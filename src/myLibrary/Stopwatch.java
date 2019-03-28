@@ -1,7 +1,5 @@
 package myLibrary;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * @author Joshua Tapp
  * This class is used to create stopwatch objects that can be used to record start and stop times with nanoTime.

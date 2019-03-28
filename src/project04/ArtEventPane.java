@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-
 import java.time.LocalDate;
 
 
@@ -24,6 +23,8 @@ public class ArtEventPane {
     private Label time = new Label ("Time (hh:mm):");
     private Label type = new Label("Type:");
     private Label isWeekemd = new Label("Weekend:");
+    private Label success = new Label();
+
 
     private Button clear = new Button("Clear");
     private Button submit = new Button("Submit");
@@ -41,6 +42,8 @@ public class ArtEventPane {
     private HBox radioGroupPane = new HBox();
 
     {
+        // CREATE PANE
+
         // Setup ToggleGroup & disable buttons from user
         weekendYes.setToggleGroup(radioGroup);
         weekendNo.setToggleGroup(radioGroup);
@@ -51,6 +54,7 @@ public class ArtEventPane {
 
         radioGroupPane.getChildren().addAll(weekendYes, weekendNo);
         radioGroupPane.setSpacing(25);
+
         // NON-USER Interface
         grid.add(name, 0, 0 );
         grid.add(eventDate, 0, 1 );
@@ -61,6 +65,7 @@ public class ArtEventPane {
         grid.add(time, 2, 1 );
         grid.add(type, 2, 2 );
         grid.add(submit, 2, 3 );
+        grid.add(success, 3, 3 );
 
         // USER EDITABLE
         grid.add(nameField, 1, 0 );
@@ -71,36 +76,55 @@ public class ArtEventPane {
         grid.add(timeField, 3 , 1);
         grid.add(typeField, 3 , 2);
 
+        // FORMATTING
         grid.setHgap(5);
         grid.setVgap(5);
         grid.setPadding(new Insets(25));
+
+        // ASSIGN THIS TO PANE FIELD
         ArtPane = grid;
 
 
         // EVENT HANDLERS
+
+        // SUBMIT BUTTON ACTION
         submit.setOnAction((ActionEvent e) -> {
-//            LocalDate temp = Event.parseDate(dateField.toString());
-          //  String str = Week.isWeekEnd(temp);
+            try {
+                LocalDate temp = Event.parseDate(dateField.getText() + " " + timeField.getText());
+                String str = Week.isWeekEnd(temp);
 
-            //ArtEvent aE = new ArtEvent(nameField.toString(), placeField.toString() ,
-          //          Event.parseDate(dateField.toString()) , Integer.parseInt(audienceField.toString()), typeField.toString() );
+                ArtEvent aE = new ArtEvent(nameField.getText(), placeField.getText(), temp, Integer.parseInt(audienceField.getText()), typeField.getText());
 
-            if (true) {
-                select(weekendYes);
-            } else {
-                select(weekendNo);
+                if (str.equals("Weekend")) {
+                    weekendYes.setSelected(true);
+                }
+                else if (str.equals("Weekday")){
+                    weekendNo.setSelected(true);
+                }
+                success.setText("Success");
             }
+            catch(Exception error){
+                //Do Nothing
+                success.setText("ERROR");
+            }
+        });
 
-
+        // CLEAR BUTTON ACTION
+        clear.setOnAction((ActionEvent e) -> {
+            nameField.clear();
+            dateField.clear();
+            audienceField.clear();
+            placeField.clear();
+            timeField.clear();
+            typeField.clear();
+            weekendYes.setSelected(false);
+            weekendNo.setSelected(false);
+            success.setText("");
         });
     }
 
+    // METHODS
+    Pane getArtPane() { return ArtPane; }
 
-    private static void select(RadioButton bt){
-        bt.setSelected(true);
-    }
-
-    public Pane getArtPane() {
-        return ArtPane;
-    }
 }
+

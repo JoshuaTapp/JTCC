@@ -6,6 +6,11 @@ import java.util.Map;
 import java.util.Scanner;
 import myLibrary.Stopwatch;
 
+/**
+ * @author Joshua Tapp
+ * Will Experience StackOverFlow Errors due to badly written method.
+ * Will try to improve eventually using true bottom-up techniques.
+ */
 
 public class FibonacciSeries {
     private static Map<Integer, BigInteger> fibMap = new HashMap<>();
@@ -35,9 +40,9 @@ public class FibonacciSeries {
         worseAnswer = fib(index);
         fibTimer.end();
 
-        System.out.println("Top Down Method (Assigned Problem)\n" + "Fibonacci number at index 50 is: " + worseAnswer + "\n" + "Number of times fib is invoked? " + worseCounter +"\nTime to compute: " + fibTimer.toString() + " seconds");
+        System.out.println("Top Down Method (Assigned Problem)\n" + "Fibonacci number at index " + index + " is: " + worseAnswer + "\n" + "Number of times fib is invoked? " + worseCounter +"\nTime to compute: " + fibTimer.toString() + " seconds");
         System.out.println();
-        System.out.println("Bottom Up Method (Improved Version)\n" + "Fibonacci number at index 50 is: " + betterAnswer + "\n" + "Number of times betterFib is invoked? " + betterCounter + "\nTime to compute: " + betterFibTimer.toString() + " seconds");
+        System.out.println("Bottom Up Method (Improved Version)\n" + "Fibonacci number at index " + index + " is: " + betterAnswer + "\n" + "Number of times betterFib is invoked? " + betterCounter + "\nTime to compute: " + betterFibTimer.toString() + " seconds");
     }
 
 

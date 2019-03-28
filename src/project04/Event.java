@@ -82,7 +82,7 @@ public class Event {
     }
 
     public static LocalDate parseDate(String str){
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy kk:mm");
         return LocalDate.parse(str, dateFormat);
     }
 
