@@ -1,6 +1,6 @@
 package project04;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class SoccerGame extends SportEvent implements GoodWeather {
 
@@ -8,7 +8,7 @@ public class SoccerGame extends SportEvent implements GoodWeather {
     private static int NumberOfObjects;
 
     //Constructor
-    public SoccerGame(String name, String place, LocalDate dateTime, int audience, String[] teams, int[] scores, String league, Weather weather) {
+    public SoccerGame(String name, String place, LocalDateTime dateTime, int audience, String[] teams, int[] scores, String league, Weather weather) {
         super(name,place,dateTime,audience,teams,scores,league);
         this.setWeather(weather);
         this.setNumberOfObjects();

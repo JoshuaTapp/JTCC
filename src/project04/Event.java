@@ -1,22 +1,22 @@
 package project04;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 
 public class Event {
     private String name;
     private String place;
-    private LocalDate dateTime;
+    private LocalDateTime dateTime;
     private int audience;
     private static int NumberOfObjects;
     private static List<Event> EventList = new ArrayList<>();
 
     //Constructors
-    public Event(String name, String place, LocalDate dateTime, int audience) {
+    public Event(String name, String place, LocalDateTime dateTime, int audience) {
         this.setNumberOfObjects();
         this.setName(name);
         this.setPlace(place);
@@ -42,11 +42,11 @@ public class Event {
         this.place = place;
     }
 
-    public LocalDate getDateTime() {
+    public LocalDateTime getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDate dateTime) {
+    public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -76,17 +76,16 @@ public class Event {
 
     //HELPER METHODS
 
-    public String formatDate(LocalDate dateTime){
+    public String formatDate(LocalDateTime dateTime){
         DateTimeFormatter date = DateTimeFormatter.ofPattern("MM/dd/yyyy kk:mm");
         return date.format(this.getDateTime());
     }
 
-    public static LocalDate parseDate(String str){
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy kk:mm");
-        return LocalDate.parse(str, dateFormat);
+    public static LocalDateTime parseDate(String str){
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy" + "kk:mm");
+        return LocalDateTime.parse(str, dateFormat);
     }
 
-    //METHODS
     @Override
     public String toString() {
         return

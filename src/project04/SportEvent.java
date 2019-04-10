@@ -1,7 +1,7 @@
 package project04;
 
 import java.lang.reflect.Array;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public abstract class SportEvent extends Event {
 
@@ -13,7 +13,7 @@ public abstract class SportEvent extends Event {
 
     //Constructor
 
-    public SportEvent(String name, String place, LocalDate dateTime, int audience, String[] teams, int[] scores, String league){
+    public SportEvent(String name, String place, LocalDateTime dateTime, int audience, String[] teams, int[] scores, String league){
         super(name,place,dateTime,audience);
         this.setTeams(teams);
         this.setScores(scores);
@@ -71,6 +71,7 @@ public abstract class SportEvent extends Event {
         else return (Math.random() > 0.499999999999999 ?  t1 : t2);
         }
 }
+
 
 
 

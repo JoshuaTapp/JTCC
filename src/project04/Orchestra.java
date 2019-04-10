@@ -1,6 +1,6 @@
 package project04;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class Orchestra extends MusicEvent {
@@ -9,7 +9,7 @@ public class Orchestra extends MusicEvent {
     private static int NumberOfObjects = 0;
 
 
-    public Orchestra(String name, String place, LocalDate dateTime, int audience, String[] performers, boolean attire) {
+    public Orchestra(String name, String place, LocalDateTime dateTime, int audience, String[] performers, boolean attire) {
         super(name, place,dateTime, audience, performers);
         this.setCasualAttire(attire);
         this.setNumberOfObjects();

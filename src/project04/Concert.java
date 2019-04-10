@@ -1,6 +1,6 @@
 package project04;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Concert extends MusicEvent implements GoodWeather {
 
@@ -9,7 +9,7 @@ public class Concert extends MusicEvent implements GoodWeather {
     private static int NumberOfObjects = 0;
 
     //Constructor
-    public Concert(String name, String place, LocalDate dateTime, int audience, String[] performers, String type, Weather weather) {
+    public Concert(String name, String place, LocalDateTime dateTime, int audience, String[] performers, String type, Weather weather) {
         super(name,place,dateTime,audience,performers);
         this.setType(type);
         this.setWeather(weather);
@@ -49,11 +49,12 @@ public class Concert extends MusicEvent implements GoodWeather {
         return String.format("%s [type = %s, %s]",
                 super.toString(),
                 this.getType(),
-                this.getWeather().isGoodWeather() ? "Good Weather" : "Bad Weather" );
+                (this.isGoodWeather()) ? "Good Weather" : "Bad Weather");
     }
 
     @Override
-    public boolean isGoodWeather(){
+    public boolean isGoodWeather() {
         return this.getWeather().isGoodWeather();
     }
+
 }

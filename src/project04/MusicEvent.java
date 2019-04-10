@@ -1,13 +1,13 @@
 package project04;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public abstract class MusicEvent extends Event {
     private String[] performers;
     private static int NumberOfObjects = 0;
 
-    public MusicEvent(String name, String place, LocalDate dateTime, int audience, String[] performers) {
+    public MusicEvent(String name, String place, LocalDateTime dateTime, int audience, String[] performers) {
         super(name, place, dateTime, audience);
         this.setPerformers(performers);
         this.setNumberOfObjects();

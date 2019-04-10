@@ -1,7 +1,7 @@
 package project04;
 
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ArtEvent extends Event {
 
@@ -10,7 +10,7 @@ public class ArtEvent extends Event {
 
 
     //Constructor
-    public ArtEvent(String name, String place , LocalDate dateTime, int audience, String type){
+    public ArtEvent(String name, String place , LocalDateTime dateTime, int audience, String type){
         super(name, place, dateTime, audience);
         this.setType(type);
         this.setNumberOfObjects();
