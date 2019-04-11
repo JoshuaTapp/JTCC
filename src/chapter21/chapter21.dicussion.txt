@@ -1,0 +1,97 @@
+Sets vs Lists
+
+Sets and List are both Sub-Interfaces of the Collections Interface we have been learning about over the last few weeks.
+They differ in several ways, but they both have the goal of Collections, which is the ability to manipulate collections
+of data in an ordered and generic way.
+
+    Sets
+The differences that Sets have versus it super are minimal. The main difference is that Sets do not allow duplicate elements.
+They model the idea of Sets in Mathematics, which is a collection of distinct objects. Such as the Natural Numbers Set, which
+is the collection of distinct non-negative Integers starting at zero. The Idea of sets in Java mirror this definition by allowing
+the author to create their own Set Object that represents distinct elements (objects).
+The Interface Docs says this about Sets
+        /**
+         * A collection that contains no duplicate elements.  More formally, sets
+         * contain no pair of elements <code>e1</code> and <code>e2</code> such that
+         * <code>e1.equals(e2)</code>, and at most one null element.  As implied by
+         * its name, this interface models the mathematical <i>set</i> abstraction.
+         *
+         * <p>The <tt>Set</tt> interface places additional stipulations, beyond those
+         * inherited from the <tt>Collection</tt> interface, on the contracts of all
+         * constructors and on the contracts of the <tt>add</tt>, <tt>equals</tt> and
+         * <tt>hashCode</tt> methods.
+        **/
+This means that all of the Collection methods are applicable to Sets with the slight change that some of their methods have
+been modified to respect the Sets property of distinct elements. I found this in the API that shows one change in the source
+code in the spliterator method.
+
+            default Spliterator<E> spliterator() { return Spliterators.spliterator(this, Spliterator.DISTINCT); }
+
+The Spliterator.DISTINCT DOCS have this to say,
+                /**
+                 * Characteristic value signifying that, for each pair of
+                 * encountered elements {@code x, y}, {@code !x.equals(y)}. This
+                 * applies for example, to a Spliterator based on a {@link Set}.
+                 **/
+Another difference is that mutability is not an issue with Collections. However, because Sets do not have duplicate elements
+at creation, if the elements are mutable the state of the Set is not known. This leads Sets to more useful for immutable elements
+and elements that are effectively final.
+
+Finally the JavaDocs has this to say about Null Values.
+                /**
+                 * <p>Some set implementations have restrictions on the elements that
+                 * they may contain.  For example, some implementations prohibit null elements,
+                 * and some have restrictions on the types of their elements.  Attempting to
+                 * add an ineligible element throws an unchecked exception, typically
+                 * <tt>NullPointerException</tt> or <tt>ClassCastException</tt>.
+                 **/
+This means that null elements are optional. In the java.util.Sets library, there are no implementations of Sets that allow
+more than one element of null (due to the distinct element characteristic). Also due to the way Sets insures that all elements
+distinct, insertion of elements is not possible because they do not have positional access like the List interface. However, the
+LinkedHashSet implements a LinkedList in the HashSet to allow ordering at a modest resource cost. (this is typically not used unless
+this behavior is specifically needed.)
+
+Sets have the unique property of insuring distinct elements. This is useful when you need to create a "family" of objects that are
+related and require this behavior. A database of social security numbers is one example that applies to a Set. Duplicate SSN for
+multiple people would be unhelpful, as we would want to centralize the data around that distinct element.
+
+    List
+List are a form of a Collection that is ordered. You should use List if the following characteristics are needed in your specification.
+Note: They inherit all the properties of Collections in addition to the following things:
+
+Positional Access
+    The ability to manipulate elements based on their index in the list. This means that an object in a List can be acted
+    on without naming it explicitly by referencing the List and the position on the list.
+
+Search
+    The ability to search for an object by its name and the search method to return its index in the List. This is accomplished
+    with the .indexOf() and .lastIndexOf() methods that take a parameter of an object and return the index of this object at its
+    first of last occurrence respectively as an int value.
+
+Iteration
+    Iteration is a part of Collection, however because the List data structure is sequential, the listIterator methods are
+    substituted to take advantage of its ordered nature. This allows the iterator to traverse both directions of the
+    List (verses other Collection members can only traverse from beginning to end). This can be seen by the List.hasPrevious()
+    method. This method is different than other Collection members that only contain Iterator and its .hasNext() method. This is
+    a behavior provided by its sequential property and its pointers before and after in each index object.
+
+Range-View Operation
+    Because List are sequential, you can return a "view" of a List from a startIndex to endIndex that is a sub-list of the
+    original List. This is due to the sequential (indexed) nature of List.
+
+Because Lists are do not have the restriction of Sets (only containing distinct elements), they are able to house multiple null values
+and other duplicate objects. One should use List when the ability to easily manipulate dynamic objects in needed. The above characteristics
+allow for quick search, access, and iteration over your data. The List Algorithms are especially useful, if the following operations are
+needed, a List is the preferred Data Structure.
+        * sort — sorts a List using a merge sort algorithm, which provides a fast, stable sort. (A stable sort is one that does not reorder equal elements.)
+        * shuffle — randomly permutes the elements in a List.
+        * reverse — reverses the order of the elements in a List.
+        * rotate — rotates all the elements in a List by a specified distance.
+        * swap — swaps the elements at specified positions in a List.
+        * replaceAll — replaces all occurrences of one specified value with another.
+        * fill — overwrites every element in a List with the specified value.
+        * copy — copies the source List into the destination List.
+        * binarySearch — searches for an element in an ordered List using the binary search algorithm.
+        * indexOfSubList — returns the index of the first sublist of one List that is equal to another.
+        * lastIndexOfSubList — returns the index of the last sublist of one List that is equal to another.
+
