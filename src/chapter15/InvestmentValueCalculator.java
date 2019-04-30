@@ -1,6 +1,10 @@
+/*
+ * Created on 4/30/19 12:15 AM by Joshua Tapp
+ * Student at John Tyler Community College
+ */
+
 package chapter15;
 
-import com.sun.tools.corba.se.idl.constExpr.ShiftRight;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;

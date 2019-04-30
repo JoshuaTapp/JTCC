@@ -1,5 +1,9 @@
+/*
+ * Created on 4/30/19 12:15 AM by Joshua Tapp
+ * Student at John Tyler Community College
+ */
+
 package project02;
-import com.sun.org.apache.xpath.internal.operations.Number;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,7 +22,7 @@ public abstract class Event {
 
     //Constructors
     public Event(String name, String place, Date dateTime, int audience) {
-        this.setNumberOfObjects();
+        setNumberOfObjects();
         this.setName(name);
         this.setPlace(place);
         this.setDateTime(dateTime);
