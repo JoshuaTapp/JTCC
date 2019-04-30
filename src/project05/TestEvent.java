@@ -1,4 +1,9 @@
 /*
+ * Created on 4/30/19 6:52 PM by Joshua Tapp
+ * Student at John Tyler Community College
+ */
+
+/*
  * Created on 4/30/19 6:44 PM by Joshua Tapp
  * Student at John Tyler Community College
  */
@@ -65,7 +70,7 @@ public class TestEvent {
             }
         }
         sort(popList, Comparator.comparing(o -> o.getClass().getName()));
-
+        reverse(popList);
 
         System.out.println("Number of most popular events: " + popList.size());
         System.out.println("Most popular events (sorted by name):");
