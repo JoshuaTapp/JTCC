@@ -1,3 +1,8 @@
+/*
+ * Created on 4/30/19 6:44 PM by Joshua Tapp
+ * Student at John Tyler Community College
+ */
+
 package project03;
 
 import java.text.SimpleDateFormat;
@@ -16,7 +21,7 @@ public class Event {
 
     //Constructors
     public Event(String name, String place, Date dateTime, int audience) {
-        this.setNumberOfObjects();
+        setNumberOfObjects();
         this.setName(name);
         this.setPlace(place);
         this.setDateTime(dateTime);
@@ -49,7 +54,7 @@ public class Event {
         this.dateTime = dateTime;
     }
 
-    public int getAudience() {
+    public  int getAudience() {
         return audience;
     }
 
